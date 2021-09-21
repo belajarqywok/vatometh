@@ -1,0 +1,34 @@
+{
+    "service" : {
+
+        "host"     :  "192.168.137.1",
+        "port"     :   22,
+        "user"     :  "qywok",
+        "password" :  "qywok"
+
+    },
+
+    "commands" : [
+
+        {
+
+            "message" : "[ updating.......... ]",
+            "cmd"     : "apt update"
+
+        },
+
+        {
+
+            "message" : "[ installing docker ]",
+            "cmd"     : [
+
+                "ls",
+                "ls /",
+                "apt install docker.io"
+
+            ]
+
+        }
+
+    ]
+}

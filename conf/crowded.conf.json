@@ -1,0 +1,66 @@
+{
+    "services" : [
+
+        {
+
+            "host"     :  "192.168.137.1",
+            "port"     :   22,
+            "user"     :  "qywok",
+            "password" :  "qywok",
+            "commands" :  [
+
+                {
+
+                    "message" : "installing ssh & docker",
+                    "cmd"     : [
+        
+                        "apt-get install openssh",
+                        "apt-get install docker.io",
+                        "service docker start"
+        
+                    ]
+        
+                }
+
+
+            ]
+
+        },
+        
+        {
+
+            "host"     :  "192.168.137.1",
+            "port"     :   22,
+            "user"     :  "qywok",
+            "password" :  "qywok",
+            "commands" :  {
+
+                "message" : "installing ssh & docker",
+                "cmd"     : "apt-get install openssh"
+    
+            }
+
+        },
+
+        {
+
+            "host"     :  "192.168.137.1",
+            "port"     :   22,
+            "user"     :  "qywok",
+            "password" :  "qywok",
+            "commands" :  [
+
+                {
+
+                    "message" : "installing ssh & docker",
+                    "cmd"     : "apt-get install openssh"
+    
+                }
+
+            ]
+
+        }
+        
+
+    ]
+}

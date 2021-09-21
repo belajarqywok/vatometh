@@ -1,0 +1,2 @@
+# vatometh
+ configuration management tool

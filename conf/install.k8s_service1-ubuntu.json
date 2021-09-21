@@ -1,0 +1,58 @@
+{
+    "service" : {
+
+        "host"     :  "192.168.137.1",
+        "port"     :   22,
+        "user"     :  "qywok",
+        "password" :  "qywok"
+
+    },
+
+    "commands" : [
+
+        {
+
+            "message" : "[ Install curl & Add signing key ]",
+            "cmd"     : [
+
+                "apt-get install curl",
+                "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add"
+
+            ]
+
+        },
+
+        {
+
+            "message" : "[ Add repositories & Installation tools ]",
+            "cmd"     : [
+
+                "apt-add-repository 'deb http://apt.kubernetes.io/ kubernetes-xenial main'",
+                "apt-get install kubeadm kubelet kubectl",
+                "apt-mark hold kubeadm kubelet kubectl && kubeadm version"
+
+            ]
+
+        },
+
+        {
+
+            "message" : "[ Deployment ]",
+            "cmd"     : [
+
+                "swapoff –a",
+                "kubeadm init --pod-network-cidr=192.168.137.1/16",
+                "mkdir -p $HOME/.kube",
+                "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config",
+                "chown $(id -u):$(id -g) $HOME/.kube/config",
+                "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml",
+                "kubectl get pods --all-namespaces",
+                "kubeadm join --discovery-token abcdef.1234567890abcdef --discovery-token-ca-cert-hash sha256:1234..cdef 1.2.3.4:6443",
+                "kubectl get nodes"
+
+            ]
+
+        }
+
+    ]
+}
